@@ -67,4 +67,8 @@ app.post("/remove-file", authenticate, (req, res) => {
 
 app.listen(3000, () => {
     console.log("Docker Bot Manager API running on port 3000");
+    exec("docker pull node", (error, stdout, stderr) => {
+        if (error) return console.error(stderr || error.message);
+        console.log(stdout.trim());
+    });
 });
